@@ -21,6 +21,7 @@
         </style>
     </head>
     <body>
+            @include('includes.header')
         <div class="wrapper">
             <form action="{{route('page.store')}}" method="POST">
                 <div class="form-group">
