@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
 Route::post('/page/create',[PageController::class,'store'])->name('page.store');
+Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
 
