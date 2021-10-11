@@ -23,16 +23,43 @@
     <body>
             @include('includes.header')
         <div class="wrapper">
-            <form action="{{route('page.store')}}" method="POST">
-                <div class="form-group">
-                    <label for="categories">Categorie:</label>
-                    <select name="categories" id="categories">
-                        @foreach($categories as $categorie):
+            <div class="form-container">
+                <form action="{{route('page.store')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="category">Categorie:</label>
+                        <select name="category" id="category">
+                            @foreach($categories as $categorie):
                             <option value="{{$categorie->id}}">{{$categorie->id}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </form>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Naam:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Kleur:</label>
+                        <input type="color" name="color" id="color">
+                    </div>
+                    <div class="form-group">
+                        <label for="slug">Slug:</label>
+                        <input type="text" name="slug" id="slug">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Titel:</label>
+                        <input type="text" name="title" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="contents">Content:</label>
+                        <textarea name="contents" id="contents" cols="30" rows="20"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+
         </div>
     </body>
 </html>
