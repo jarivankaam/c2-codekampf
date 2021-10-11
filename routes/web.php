@@ -21,5 +21,8 @@ Route::get('/', function () {
 
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
 Route::post('/page/create',[PageController::class,'store'])->name('page.store');
-Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
 
+
+//THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
+Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
+Route::get("/{category}", [\App\Http\Controllers\CategoryController::class, "get"])->name("category");

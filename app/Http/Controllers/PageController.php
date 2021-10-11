@@ -61,11 +61,11 @@ class PageController extends Controller
             ->with("category", $cat);
     }
 
-    function getCategory(string $slug): ?Category {
+    public static function getCategory(string $slug): ?Category {
         return Category::query()->where("slug", "=", $slug)->get()->first();
     }
 
-    function getPage($catId, string $slug): ?Page {
+    public static function getPage($catId, string $slug): ?Page {
         return Page::query()->where("category_id", "=", $catId)->where("slug", "=", $slug)->get()->first();
     }
 }
