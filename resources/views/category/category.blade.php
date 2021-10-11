@@ -34,8 +34,11 @@
         <p>{{ $category["description"] }}</p>
     </div>
 
+    <h3 class="pages-text">Pages: </h3>
     <ul class="page-list">
-
+        @foreach($pages as $page)
+            <a href="{{ route("page", [$category["slug"], $page["slug"]]) }}"><h4 style="--page-color: {{ $page["color"] }};">{{ $page["name"] }}</h4></a>
+        @endforeach
     </ul>
 </div>
 </body>

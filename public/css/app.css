@@ -86,3 +86,13 @@
   text-decoration: underline;
 }
 
+.page-list h4 {
+  border: var(--page-color) solid 2px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.pages-text {
+  margin-top: 50px;
+}
+
