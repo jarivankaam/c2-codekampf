@@ -21,18 +21,23 @@
         </style>
     </head>
     <body>
+
+        @include('includes.header')
         <div class="wrapper-homepage">
             <div class="title">
                 <h1>C2-CodeCamp praktijk opdracht</h1>
             </div>
-            <div class="contact">
-                <h3>Contact Us</h3>
-                <p>Telefoonnummer: 076-80934847</p>
-                <p>Addres: Terheidenseweg 350 breda</p>
-            </div>
-            <div class="about">
-                <h3>About us</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda debitis, delectus esse facere fugit impedit mollitia quibusdam ullam veritatis. Ad consequatur cum expedita facilis magnam maxime pariatur reiciendis sapiente.</p>
+            <div class="gridwrapper">
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                    <p>Telefoonnummer: 076-80934847</p>
+                    <p>Addres: Terheidenseweg 350 breda</p>
+                </div>
+                <div class="about">
+                    <h3>About us</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda debitis, delectus esse facere fugit impedit mollitia quibusdam ullam veritatis. Ad consequatur cum expedita facilis magnam maxime pariatur reiciendis sapiente.</p>
+
+                </div>
 
             </div>
         </div>
