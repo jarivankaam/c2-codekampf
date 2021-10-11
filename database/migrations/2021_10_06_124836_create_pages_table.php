@@ -16,7 +16,7 @@ class CreatePagesTable extends Migration
         Schema::create('page', function (Blueprint $table) {
             $table->id();
             $table->foreignId("category_id");
-            $table->foreign("category_id")->references("id")->on("page");
+            $table->foreign("category_id")->references("id")->on("category");
             $table->text("name");
             $table->string("color", 10)->default("#FFF");
             $table->string("slug", 15)->nullable(false);
