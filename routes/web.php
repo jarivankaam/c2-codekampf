@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('create', function () {
+    return view('page/create');
+});
+
+Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
+Route::post('/page/',[PageController::class,'store'])->name('page.store');
+
