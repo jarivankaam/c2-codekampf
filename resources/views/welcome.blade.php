@@ -23,7 +23,7 @@
     <body>
 
         @include('includes.header')
-        <div class="wrapper-homepage">
+        <div class="wrapper">
             <div class="title">
                 <h1>C2-CodeCamp praktijk opdracht</h1>
             </div>
