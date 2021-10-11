@@ -16,13 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
-Route::get('create', function () {
-    return view('page/create');
-});
 
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
-Route::post('/page/',[PageController::class,'store'])->name('page.store');
+Route::post('/page/create',[PageController::class,'store'])->name('page.store');
+Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
 

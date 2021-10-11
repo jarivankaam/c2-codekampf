@@ -15,8 +15,25 @@ class PageController extends Controller
         return view('page/create')
             ->with("categories", $cats);
     }
-    function store(){
+    function store(Request $request){
+        $request->validate([
+            'category' => 'required',
+            'name' => 'required',
+            'color' => 'required',
+            'slug' => 'required',
+            'title' => 'required',
+            'contents' => 'required'
+        ]);
+        $page = new Page();
+        $page->category_id = $request->category;
+        $page->name = $request->name;
+        $page->color = $request->color;
+        $page->slug = $request->slug;
+        $page->title = $request->title;
+        $page->content = $request->contents;
+        $page->save();
 
+        return redirect()->route('home');
     }
 
     function get(Request $request, string $category_slug, string $page_slug) {
