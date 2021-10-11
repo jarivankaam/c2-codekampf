@@ -38,7 +38,16 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda debitis, delectus esse facere fugit impedit mollitia quibusdam ullam veritatis. Ad consequatur cum expedita facilis magnam maxime pariatur reiciendis sapiente.</p>
 
                 </div>
+                <div class="time">
+                    <h3>Datum en tijd:</h3>
+                    <?php
+                    date_default_timezone_get();
+                    echo date('d-m-Y H:i:s' ); //output 05-01-2016
 
+
+
+                    ?>
+                </div>
             </div>
         </div>
     </body>
