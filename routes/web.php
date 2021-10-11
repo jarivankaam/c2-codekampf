@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
 Route::get('create', function () {
     return view('page/create');
 });
