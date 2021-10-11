@@ -9,6 +9,10 @@
     display: flex;
     justify-content: space-around;
     border-bottom: 2px solid black;
+    background: #f2f2f2;
+    -webkit-box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
+    -moz-box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
+    box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
 
 }
 .header a{
