@@ -38,7 +38,10 @@ class PageController extends Controller
         $content = $parseDown->text($page["content"]);
 
 
-        return ;
+        return view("page.page")
+            ->with("content", $content)
+            ->with("page", $page)
+            ->with("category", $cat);
     }
 
     function getCategory(string $slug): ?Category {

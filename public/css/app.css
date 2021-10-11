@@ -21,3 +21,31 @@
   grid-template-columns: repeat(1, 1fr 1fr);
 }
 
+.page h1 {
+  border-bottom: var(--page-color) 2px solid;
+}
+
+.page-content h2 {
+  border-bottom: var(--page-color) 1px solid;
+}
+.page-content a {
+  color: var(--page-color);
+  text-decoration: underline;
+  text-underline: var(--page-color);
+  text-underline-offset: 2px;
+}
+.page-content pre {
+  border-radius: 15px;
+  padding: 15px;
+  border: var(--page-color) solid 2px;
+}
+
+.link {
+  color: blue;
+  font-size: 17px;
+}
+.link a {
+  margin: auto 0;
+  text-decoration: underline;
+}
+
