@@ -4,6 +4,7 @@
 }
 
 
+
 .header{
     text-align: center;
     display: flex;
@@ -21,4 +22,14 @@
 .gridwrapper{
     display: grid;
     grid-template-columns: repeat(1, 1fr 1fr);
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: black;
+    text-align: center;
+    border-top: 2px solid black;
+    background: #f2f2f2 ;
 }

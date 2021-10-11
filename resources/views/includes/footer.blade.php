@@ -2,11 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <div class="footer">
 
-    <a href="#">Home</a>
-    <a href="#">POC</a>
-    <h2>C2-CodeCamp</h2>
-    <a href="#">POC</a>
-    <a href="#">POC</a>
+   <p>pra c2 CodeCamp 2021 &copy; Jari, Fabian, Jaap en Marijn</p>
 </div>
 
 </html>
