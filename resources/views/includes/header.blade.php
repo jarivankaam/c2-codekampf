@@ -4,7 +4,7 @@
 
     <a href="#">Home</a>
     <a href="#">POC</a>
-    <h2>C2-CodeCamp</h2>
+    <h2>C2-CodeKampf</h2>
     <a href="#">POC</a>
     <a href="#">POC</a>
 </div>
