@@ -96,3 +96,38 @@
   margin-top: 50px;
 }
 
+.category {
+  width: 100%;
+  border: #1a202c solid 2px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.category * {
+  display: inline-block;
+}
+.category .edit {
+  background-color: orange;
+  color: white;
+}
+.category .edit:hover {
+  background-color: #d78c00;
+}
+.category .delete {
+  background-color: red;
+  color: white;
+}
+.category .delete:hover {
+  background-color: #d90000;
+}
+.category a {
+  transition: background-color 0.2s;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 15px;
+  float: right;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px;
+}
+.category h4 {
+  margin-left: 20px;
+}
+

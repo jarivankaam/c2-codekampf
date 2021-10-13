@@ -103,3 +103,46 @@
 .pages-text {
     margin-top: 50px;
 }
+
+.category {
+    width: 100%;
+    border: #1a202c solid 2px;
+    border-radius: 10px;
+    margin: 10px;
+     * {
+         display: inline-block;
+     }
+
+    .edit {
+        background-color: orange;
+        color: white;
+        &:hover {
+            background-color: #d78c00;
+        }
+    }
+
+    .delete {
+        background-color: red;
+        color: white;
+
+        &:hover {
+            background-color: #d90000;
+        }
+    }
+
+    a {
+        transition: background-color .2s;
+        border-radius: 10px;
+        padding: 5px 10px;
+        margin: 15px;
+        float: right;
+        box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px;
+
+
+    }
+
+    h4 {
+        margin-left: 20px;
+    }
+
+}

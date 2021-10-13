@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,14 @@ Route::get('/', function () {
 })->name('home');
 
 
+//Pages
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
 Route::post('/page/create',[PageController::class,'store'])->name('page.store');
+
+//Categories
+Route::get("/category/create", [CategoryController::class, "create"])->name("category.create");
+Route::post("/category/store", [CategoryController::class, "store"])->name("category.store");
+Route::get("/categories", [CategoryController::class, "categoryList"])->name("category.list");
 
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD

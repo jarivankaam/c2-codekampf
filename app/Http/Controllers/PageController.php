@@ -36,6 +36,14 @@ class PageController extends Controller
         return redirect()->route('home');
     }
 
+
+    /**
+     * Get a page and category
+     * @param Request $request
+     * @param string $category_slug
+     * @param string $page_slug
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|null
+     */
     function get(Request $request, string $category_slug, string $page_slug) {
         $cat = $this->getCategory($category_slug);
 
