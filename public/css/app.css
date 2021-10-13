@@ -69,6 +69,10 @@
   background-color: #4161ff;
 }
 
+body {
+  font-family: "Nunito", sans-serif;
+}
+
 .wrapper {
   width: 960px;
   margin: 0 auto;
