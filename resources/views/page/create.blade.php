@@ -46,7 +46,6 @@
                         <div class="form-group">
                             <label>Categorie:</label><br>
                             <select class="form-input" name="category">
-                                <option value="">NONE</option>
                                 @foreach($categories as $categorie):
                                 <option value="{{$categorie->id}}">{{$categorie->title}}</option>
                                 @endforeach
