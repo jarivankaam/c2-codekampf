@@ -49,6 +49,12 @@ class CategoryController extends Controller
             ->with("pages", $this->getPages($category));
     }
 
+    
+    function delete(Category $category) {
+        $category->delete();
+        return redirect()->route("category.list");
+    }
+
     function getPages(Category $category): ?array
     {
         return Page::query()->where("category_id", "=", $category["id"])->get()->all();
