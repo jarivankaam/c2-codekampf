@@ -41,8 +41,8 @@
                 <div class="time">
                     <h3>Datum en tijd:</h3>
                     <?php
-                    date_default_timezone_get();
-                    echo date('d-m-Y H:i:s' ); //output 05-01-2016
+                    date_default_timezone_set('Europe/Amsterdam');
+                    echo date('d-m-Y H:i:s' );
 
 
 
