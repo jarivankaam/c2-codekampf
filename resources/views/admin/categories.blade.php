@@ -29,7 +29,7 @@
             <div class="category">
                 <h4>{{ $category["title"] }}</h4>
                 <a href="" class="edit">Edit</a>
-                <a href="" class="delete">Delete</a>
+                <a href="{{ route("category.delete", [$category]) }}" class="delete">Delete</a>
             </div>
         @endforeach
     </div>

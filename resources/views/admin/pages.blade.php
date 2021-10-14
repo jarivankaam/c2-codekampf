@@ -21,40 +21,20 @@
     </style>
 </head>
 <body>
+
 @include('includes.header')
 <div class="wrapper">
-    <div class="form-container">
-        <form action="{{route('category.store')}}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="title">Titel:</label>
-                <input type="text" name="title" id="title">
+    <div class="category-list">
+        @foreach($page as $page)
+            <div class="category">
+                <h4>{{ $page["title"] }}</h4>
+                <a href="" class="edit">Edit</a>
+                <a href="" class="delete">Delete</a>
             </div>
-            <div class="form-group">
-                <label for="slug">Slug:</label>
-                <input type="text" name="slug" id="slug">
-            </div>
-
-            <div class="form-group">
-                <label for="parent">Parent: </label>
-                <select name="parent" id="parent">
-                    <option value="">None</option>
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat["id"] }}">{{ $cat["title"] }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="description">Omschrijving:</label>
-                <input type="text" name="description" id="description">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit">
-            </div>
-        </form>
+        @endforeach
     </div>
-
 </div>
+
+@include('includes.footer')
 </body>
 </html>
