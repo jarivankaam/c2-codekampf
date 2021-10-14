@@ -29,6 +29,7 @@ Route::get("/page/edit/{page}", [PageController::class, "edit"])->name("page.edi
 Route::post("/page/edit", [PageController::class, "update"])->name("page.update");
 Route::get("/pages", [PageController::class, "pageList"])->name("page.list");
 Route::get("/pages/{page}/delete", [PageController::class, "delete"])->name("page.delete");
+
 //Categories
 Route::get("/category/create", [CategoryController::class, "create"])->name("category.create");
 Route::post("/category/create", [CategoryController::class, "store"])->name("category.store");
@@ -36,7 +37,6 @@ Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->na
 Route::post("/category/{category}", [CategoryController::class, "update"])->name("category.update");
 Route::get("/categories", [CategoryController::class, "categoryList"])->name("category.list");
 Route::get("/category/{category}/delete", [CategoryController::class, "delete"])->name("category.delete");
-
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
 Route::get("/{category}/{page}", [PageController::class, "get"])->name("page");
