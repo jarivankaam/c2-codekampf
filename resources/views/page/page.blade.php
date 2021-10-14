@@ -3,6 +3,11 @@
 <head>
     @include('includes.head')
     <title>C2-codecamp</title>
+    <style>
+        :root {
+            --page-color: {{ $page["color"] }};
+        }
+    </style>
 </head>
 <body>
 @include('includes.header')
