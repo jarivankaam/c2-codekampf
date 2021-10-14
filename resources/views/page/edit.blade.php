@@ -8,10 +8,8 @@
         @include('includes.header')
         <div class="wrapper">
             <div class="form-container">
-                <form action="{{route('page.update')}}" method="POST">
+                <form action="{{route('page.update', $page)}}" method="POST">
                     @csrf
-
-                    <input type="hidden" name="id" value="{{$page->id}}">
                     <div class="form-group full-width">
                         <label>Title:</label><br>
                         <input class="form-input" type="text" name="title" value="{{$page->title}}">

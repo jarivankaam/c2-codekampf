@@ -51,9 +51,8 @@ class PageController extends Controller
         return redirect()->route('home');
     }
 
-    function update(Request $request){
+    function update(Request $request, Page $page){
         $request->validate([
-            'id' => 'required',
             'category' => 'required',
             'name' => 'required',
             'color' => 'required',
@@ -61,7 +60,7 @@ class PageController extends Controller
             'title' => 'required',
             'contents' => 'required'
         ]);
-        $page = PageController::getPageById($request->id);
+
         $page->category_id = $request->category;
         $page->name = $request->name;
         $page->color = $request->color;
