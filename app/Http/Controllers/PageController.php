@@ -15,6 +15,21 @@ class PageController extends Controller
         return view('page/create')
             ->with("categories", $cats);
     }
+
+    function edit($pageSlug) {
+        $cats = Category::all();
+        $page = PageController::getPageBySlug($pageSlug);
+
+        if ($page == null) {
+            abort(404);
+            return null;
+        }
+
+        return view("page.edit")
+            ->with("page", $page)
+            ->with("categories", $cats);
+    }
+
     function store(Request $request){
         $request->validate([
             'category' => 'required',
@@ -35,7 +50,6 @@ class PageController extends Controller
 
         return redirect()->route('home');
     }
-
 
     /**
      * Get a page and category
@@ -62,7 +76,6 @@ class PageController extends Controller
         $parseDown = new Parsedown();
         $content = $parseDown->text($page["content"]);
 
-
         return view("page.page")
             ->with("content", $content)
             ->with("page", $page)
@@ -75,5 +88,9 @@ class PageController extends Controller
 
     public static function getPage($catId, string $slug): ?Page {
         return Page::query()->where("category_id", "=", $catId)->where("slug", "=", $slug)->get()->first();
+    }
+
+    public static function getPageBySlug(string $slug): ?Page {
+        return Page::query()->where("slug", "=", $slug)->get()->first();
     }
 }

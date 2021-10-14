@@ -23,6 +23,7 @@ Route::get('/', function () {
 //Pages
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
 Route::post('/page/create',[PageController::class,'store'])->name('page.store');
+Route::get("/page/edit/{page}", [\App\Http\Controllers\PageController::class, "edit"])->name("page.edit");
 
 //Categories
 Route::get("/category/create", [CategoryController::class, "create"])->name("category.create");
