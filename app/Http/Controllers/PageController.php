@@ -110,6 +110,11 @@ class PageController extends Controller
             ->with("category", $cat);
     }
 
+    function delete(Page $page) {
+        $page->delete();
+        return redirect()->route("page.list");
+    }
+
     public static function getCategory(string $slug): ?Category {
         return Category::query()->where("slug", "=", $slug)->get()->first();
     }
