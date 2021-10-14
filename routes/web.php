@@ -21,8 +21,14 @@ Route::get('/', function () {
 
 
 //Pages
+
+//Pages
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
-Route::post('/page/create',[PageController::class,'store'])->name('page.store');
+Route::post('/page/create',[PageController::class, 'store'])->name('page.store');
+Route::get("/page/edit/{page}", [PageController::class, "edit"])->name("page.edit");
+Route::post("/page/edit", [PageController::class, "update"])->name("page.update");
+Route::get("/pages", [PageController::class, "pageList"])->name("page.list");
+Route::get("/pages/{page}/delete", [PageController::class, "delete"])->name("page.delete");
 //Categories
 Route::get("/category/create", [CategoryController::class, "create"])->name("category.create");
 Route::post("/category/create", [CategoryController::class, "store"])->name("category.store");
