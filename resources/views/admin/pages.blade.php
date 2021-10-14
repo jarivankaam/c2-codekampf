@@ -28,7 +28,7 @@
         @foreach($page as $page)
             <div class="category">
                 <h4>{{ $page["title"] }}</h4>
-                <a href="" class="edit">Edit</a>
+                <a href="{{route("page.edit", [$page["slug"]])}}" class="edit">Edit</a>
                 <a href="" class="delete">Delete</a>
             </div>
         @endforeach
