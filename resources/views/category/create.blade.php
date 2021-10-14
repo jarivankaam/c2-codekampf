@@ -34,6 +34,17 @@
                 <label for="slug">Slug:</label>
                 <input type="text" name="slug" id="slug">
             </div>
+
+            <div class="form-group">
+                <label for="parent">Parent: </label>
+                <select name="parent" id="parent">
+                    <option value="">None</option>
+                    @foreach($categories as $cat)
+                        <option value="{{ $cat["id"] }}">{{ $cat["title"] }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="description">Omschrijving:</label>
                 <input type="text" name="description" id="description">

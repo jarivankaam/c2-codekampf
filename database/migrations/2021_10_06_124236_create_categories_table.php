@@ -15,6 +15,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("parent_id")->nullable();
+            $table->foreign("parent_id")->references("id")->on("category")->cascadeOnDelete();
             $table->text("title")->nullable(false);
             $table->string("slug", 15)->nullable(false);
             $table->text("description");

@@ -10,7 +10,9 @@ class CategoryController extends Controller
 {
 
     function create() {
-        return view("category.create");
+        $categories = Category::all()->all();
+        return view("category.create")
+            ->with("categories", $categories);
     }
 
     function store(Request $request) {
@@ -24,6 +26,7 @@ class CategoryController extends Controller
 
         $category->title = $request->title;
         $category->slug = $request->slug;
+        $category->parent_id = $request->parent;
         $category->description = $request->description;
         $category->save();
 
@@ -49,7 +52,7 @@ class CategoryController extends Controller
             ->with("pages", $this->getPages($category));
     }
 
-    
+
     function delete(Category $category) {
         $category->delete();
         return redirect()->route("category.list");
