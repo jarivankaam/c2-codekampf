@@ -37,6 +37,12 @@ class PageController extends Controller
     }
 
 
+    function pageList() {
+        $page = Page::all()->all();
+        return view("admin.pages")
+            ->with("page", $page);
+    }
+
     /**
      * Get a page and category
      * @param Request $request
