@@ -20,6 +20,13 @@ body {
     box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
 
 }
+.header h2 a{
+    transition: 0.2s color;
+}
+
+.header h2 a:hover {
+    color:grey;
+}
 .header a{
     margin-top: 30px;
 }
