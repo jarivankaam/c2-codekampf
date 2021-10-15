@@ -8,7 +8,7 @@
         <button onclick="dropdownJS()" class="dropbtn">Categories</button>
         <div class="dropDown-content" id="dropDownContent">
            @foreach($categories as $category)
-                <a href="{{ route("category", $category["slug"]) }}" >test</a>
+                <a href="{{ route("category", $category["slug"]) }}" >{{$category["slug"]}}</a>
             @endforeach
         </div>
     </div>
