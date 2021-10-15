@@ -33,7 +33,6 @@ class CategoryController extends Controller
         return redirect()->route("category", [$category->slug]);
     }
 
-
     function categoryList() {
         $categories = Category::all()->all();
         return view("admin.categories")
