@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController2 extends Controller
 {
     public static function categoryInclude() {
         $categories = Category::all()->all();

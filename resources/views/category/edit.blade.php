@@ -22,8 +22,8 @@
 </head>
 <body>
 @php
-    use App\Http\Controllers\homeController;
-    echo homeController::categoryInclude();
+    use App\Http\Controllers\HomeController2;
+    echo HomeController2::categoryInclude();
 @endphp
 <div class="wrapper">
     <div class="form-container">
