@@ -21,7 +21,10 @@
     </style>
 </head>
 <body>
-@include('includes.header')
+@php
+    use App\Http\Controllers\homeController;
+    echo homeController::categoryInclude();
+@endphp
 <div class="wrapper">
     <div class="form-container">
         <form action="{{route('category.store')}}" method="POST">

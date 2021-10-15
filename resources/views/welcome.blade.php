@@ -22,7 +22,10 @@
     </head>
     <body>
 
-        @include('includes.header')
+        @php
+            use App\Http\Controllers\homeController;
+            echo homeController::categoryInclude();
+        @endphp
         <div class="wrapper">
             <div class="title">
                 <h1>C2-CodeCamp praktijk opdracht</h1>

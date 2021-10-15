@@ -33,9 +33,10 @@ class CategoryController extends Controller
         return redirect()->route("category", [$category->slug]);
     }
 
-    function categoryList() {
+
+    function categoryList2() {
         $categories = Category::all()->all();
-        return view("admin.categories")
+        return view("welcome")
             ->with("categories", $categories);
     }
 

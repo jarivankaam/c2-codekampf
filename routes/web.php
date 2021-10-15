@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 //Pages
 
+
 //Pages
 Route::get("/pages", [PageController::class, "pageList"])->name("page.list");
 Route::get('/page/create', [PageController::class, 'create'])->name('page.create');
@@ -34,6 +35,7 @@ Route::get("/page/{page}/delete", [PageController::class, "delete"])->name("page
 Route::get("/categories", [CategoryController::class, "categoryList"])->name("category.list");
 Route::get("/category/create", [CategoryController::class, "create"])->name("category.create");
 Route::post("/category/create", [CategoryController::class, "store"])->name("category.store");
+Route::post("/header", [CategoryController::class, "store"])->name("category.store");
 Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->name("category.edit");
 Route::post("/category/{category}", [CategoryController::class, "update"])->name("category.update");
 Route::get("/category/{category}/delete", [CategoryController::class, "delete"])->name("category.delete");
