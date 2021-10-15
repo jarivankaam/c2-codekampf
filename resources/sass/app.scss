@@ -135,12 +135,13 @@ body {
 
 }
 .dropbtn{
-    background: #3498DB;
-    color:white;
+    background: #f2f2f2;
+    color:black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    min-width: 160px;
 }
 .dropbtn:hover, .dropbtn:focus{
     background: #2980B9;

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <div class="header">
 
 
@@ -15,5 +14,5 @@
 </div>
 
 
-<script src="js/dropdown.js"></script>
-</html>
+
+
