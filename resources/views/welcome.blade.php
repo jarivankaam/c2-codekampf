@@ -23,8 +23,8 @@
     <body>
 
         @php
-            use App\Http\Controllers\homeController;
-            echo homeController::categoryInclude();
+            use App\Http\Controllers\HomeController;
+            echo HomeController::categoryInclude();
         @endphp
         <div class="wrapper">
             <div class="title">
