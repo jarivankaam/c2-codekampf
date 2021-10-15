@@ -5,7 +5,10 @@
         <title>C2-codecamp</title>
     </head>
     <body>
-        @include('includes.header')
+    @php
+        use App\Http\Controllers\homeController;
+        echo homeController::categoryInclude();
+    @endphp
         <div class="wrapper">
             <div class="form-container">
                 <form action="{{route('page.store')}}" method="POST">

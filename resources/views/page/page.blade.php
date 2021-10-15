@@ -10,7 +10,10 @@
     </style>
 </head>
 <body>
-@include('includes.header')
+@php
+    use App\Http\Controllers\homeController;
+    echo homeController::categoryInclude();
+@endphp
 <div class="wrapper">
     <p class="link">
         /
