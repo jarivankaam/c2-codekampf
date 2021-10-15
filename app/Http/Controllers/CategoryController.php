@@ -34,9 +34,9 @@ class CategoryController extends Controller
     }
 
 
-    function categoryList2() {
+    function categoryList() {
         $categories = Category::all()->all();
-        return view("welcome")
+        return view("admin.categories")
             ->with("categories", $categories);
     }
 
