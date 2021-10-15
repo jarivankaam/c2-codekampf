@@ -44,5 +44,7 @@
         @endforeach
     </ul>
 </div>
+
+@include("includes.footer")
 </body>
 </html>
