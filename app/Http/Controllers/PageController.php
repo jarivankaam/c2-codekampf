@@ -15,6 +15,21 @@ class PageController extends Controller
         return view('page/create')
             ->with("categories", $cats);
     }
+
+    function edit($pageSlug) {
+        $cats = Category::all();
+        $page = PageController::getPageBySlug($pageSlug);
+
+        if ($page == null) {
+            abort(404);
+            return null;
+        }
+
+        return view("page.edit")
+            ->with("page", $page)
+            ->with("categories", $cats);
+    }
+
     function store(Request $request){
         $request->validate([
             'category' => 'required',
@@ -36,6 +51,32 @@ class PageController extends Controller
         return redirect()->route('home');
     }
 
+    function update(Request $request, Page $page){
+        $request->validate([
+            'category' => 'required',
+            'name' => 'required',
+            'color' => 'required',
+            'slug' => 'required',
+            'title' => 'required',
+            'contents' => 'required'
+        ]);
+
+        $page->category_id = $request->category;
+        $page->name = $request->name;
+        $page->color = $request->color;
+        $page->slug = $request->slug;
+        $page->title = $request->title;
+        $page->content = $request->contents;
+        $page->save();
+
+        return redirect()->route('home');
+    }
+
+    function pageList() {
+        $page = Page::all()->all();
+        return view("admin.pages")
+            ->with("page", $page);
+    }
 
     /**
      * Get a page and category
@@ -113,6 +154,11 @@ class PageController extends Controller
 
     }
 
+    function delete(Page $page) {
+        $page->delete();
+        return redirect()->route("page.list");
+    }
+
     public static function getCategory(string $slug): ?Category {
         return Category::query()->where("slug", "=", $slug)->get()->first();
     }
@@ -123,5 +169,13 @@ class PageController extends Controller
 
     public static function getPage($catId, string $slug): ?Page {
         return Page::query()->where("category_id", "=", $catId)->where("slug", "=", $slug)->get()->first();
+    }
+
+    public static function getPageBySlug(string $slug): ?Page {
+        return Page::query()->where("slug", "=", $slug)->get()->first();
+    }
+
+    public static function getPageById(int $id): ?Page {
+        return Page::query()->where("id", "=", $id)->get()->first();
     }
 }

@@ -21,7 +21,10 @@
     </style>
 </head>
 <body>
-@include('includes.header')
+@php
+    use App\Http\Controllers\HomeController2;
+    echo HomeController2::categoryInclude();
+@endphp
 <div class="wrapper">
     <div class="form-container">
         <form action="{{route('category.store')}}" method="POST">
@@ -56,5 +59,6 @@
     </div>
 
 </div>
+@include("includes.footer")
 </body>
 </html>

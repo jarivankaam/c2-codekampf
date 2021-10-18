@@ -11,49 +11,46 @@
     @endphp
         <div class="wrapper">
             <div class="form-container">
-                <form action="{{route('page.store')}}" method="POST">
+                <form action="{{route('page.update', $page)}}" method="POST">
                     @csrf
-
                     <div class="form-group full-width">
                         <label>Title:</label><br>
-                        <input class="form-input" type="text" name="title">
+                        <input class="form-input" type="text" name="title" value="{{$page->title}}">
                     </div>
                     <div class="form-inline">
                         <div class="form-group">
                             <label>Naam:</label><br>
-                            <input class="form-input" type="text" name="name">
+                            <input class="form-input" type="text" name="name" value="{{$page->name}}">
                         </div>
                         <div class="form-group">
                             <label>Slug:</label><br>
-                            <input class="form-input" type="text" name="slug">
+                            <input class="form-input" type="text" name="slug" value="{{$page->slug}}">
                         </div>
                     </div>
                     <div class="form-inline">
                         <div class="form-group">
                             <label>Categorie:</label><br>
                             <select class="form-input" name="category">
-                                @foreach($categories as $categorie):
-                                <option value="{{$categorie->id}}">{{$categorie->title}}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}" {{$page->category_id == $category->id ? 'selected' : ''}}>{{$category->title}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Kleur:</label><br>
-                            <input class="form-color" type="color" name="color">
+                            <input class="form-color" type="color" name="color" value="{{$page->color}}">
                         </div>
                     </div>
                     <div class="form-group full-width">
                         <label for="contents">Content:</label>
-                        <textarea class="editor-data" id="editorMarkdown" name="contents" readonly></textarea>
+                        <textarea class="editor-data" id="editorMarkdown" name="contents" readonly>{{$page->content}}</textarea>
                         <div class="form-textarea" id="editor"></div>
                     </div>
                     <div class="form-group full-width">
                         <input class="form-btn" type="submit" value="Submit">
                     </div>
-
                 </form>
             </div>
-
         </div>
 
         <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
@@ -70,6 +67,7 @@
                     },
                 }
             });
+            editor.setMarkdown(document.querySelector("#editorMarkdown").value, false);
         </script>
     </body>
 </html>

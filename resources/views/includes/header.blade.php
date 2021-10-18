@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<div class="header">
 
-    <a href="/">Home</a>
-    <a href="#">Pages</a>
-    <h2>C2-CodeCamp</h2>
-    <a href="/page/create">page create</a>
-    <a href="#">POC</a>
+<div class="header">
+    <h2><a href="/">C2-CodeCamp</a></h2>
+    <div class="categoryDropdown">
+        <button class="dropbtn" id="categoryDropdownBtn">Categories</button>
+        <div class="dropDown-content" id="dropDownContent">
+           @foreach($categories as $category)
+                <a class="categoryDropdownItemBtn" href="{{ route("category", $category["slug"]) }}" >{{$category["slug"]}}</a>
+            @endforeach
+        </div>
+    </div>
 </div>
 
-</html>
+
+
+

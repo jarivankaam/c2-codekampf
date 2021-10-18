@@ -62,4 +62,27 @@ class CategoryController extends Controller
     {
         return Page::query()->where("category_id", "=", $category["id"])->get()->all();
     }
+
+    function edit($slug){
+        $categories = Category::all()->all();
+        $category = PageController::getCategory($slug);
+        return view("category.edit")
+            ->with("category", $category)
+            ->with("categories", $categories);
+    }
+    function update(Request $request, Category $category) {
+        $request->validate([
+            "title" => "required",
+            "slug" => "required",
+            "description" => "required",
+        ]);
+
+        $category->title = $request->title;
+        $category->slug = $request->slug;
+        $category->parent_id = $request->parent;
+        $category->description = $request->description;
+        $category->save();
+
+        return redirect()->route("category", [$category->slug]);
+    }
 }

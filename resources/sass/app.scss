@@ -1,64 +1,11 @@
-@import 'createPage';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-body {
-    font-family: 'Nunito', sans-serif;
-}
+// Variables
+@import 'variables';
 
-.wrapper{
-    width: 960px;
-    margin: 0 auto;
-}
-
-.header{
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 2px solid black;
-    background: #f2f2f2;
-    -webkit-box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
-    -moz-box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
-    box-shadow: 10px 24px 50px -19px rgba(161,161,161,0.5);
-
-}
-.header a{
-    margin-top: 30px;
-}
-.gridwrapper{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr 1fr);
-}
-
-.footer{
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    color: black;
-    text-align: center;
-    border-top: 2px solid black;
-    background: #f2f2f2 ;
-}
-
-.page {
-    h1 {
-
-        border-bottom: var(--page-color) 2px solid;
-
-    }
-}
-
-.page-content {
-    h2 {
-        border-bottom: var(--page-color) 1px solid;
-    }
-
-    a {
-        color: var(--page-color);
-        text-decoration: underline;
-        text-underline: var(--page-color);
-        text-underline-offset: 2px;
-    }
-
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
     pre {
         border-radius: 15px;
         padding: 15px;
@@ -127,3 +74,35 @@ body {
     }
 
 }
+.dropbtn{
+    background: #f2f2f2;
+    color:black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    min-width: 160px;
+}
+.dropbtn:hover, .dropbtn:focus{
+    background: #2980B9;
+}
+.MydropDown{
+    position: relative;
+    display: inline-block;
+}
+.dropDown-content{
+    display: none;
+    position: absolute;
+    background: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropDown-content a{
+color:black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.show {display:block;}

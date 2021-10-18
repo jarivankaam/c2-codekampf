@@ -21,7 +21,7 @@ class CreatePagesTable extends Migration
             $table->string("color", 10)->default("#FFF");
             $table->string("slug", 15)->nullable(false);
             $table->text("title");
-            $table->text("content");
+            $table->longText("content");
             $table->timestamps();
         });
     }
