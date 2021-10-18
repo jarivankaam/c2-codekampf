@@ -12,4 +12,8 @@ class Category extends Model
      * @var mixed|string
      */
     public $currentPath;
+
+//    public function getFullPath(): string {
+//
+//    }
 }

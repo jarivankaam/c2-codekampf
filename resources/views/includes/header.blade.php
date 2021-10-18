@@ -5,7 +5,7 @@
         <button class="dropbtn" id="categoryDropdownBtn">Categories</button>
         <div class="dropDown-content" id="dropDownContent">
            @foreach($categories as $category)
-                <a class="categoryDropdownItemBtn" href="{{ route("category", $category["slug"]) }}" >{{$category["slug"]}}</a>
+                <a class="categoryDropdownItemBtn" href="{{ $category["slug"] }}" >{{ $category["title"] }}</a>
             @endforeach
         </div>
     </div>
