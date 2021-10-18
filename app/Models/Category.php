@@ -13,7 +13,12 @@ class Category extends Model
      */
     public $currentPath;
 
-//    public function getFullPath(): string {
-//
-//    }
+    public function getFullPath(): string {
+        $path = "";
+        if (is_numeric($this["parent_id"])) {
+            $path = Category::query()->where("id", "=", $this["parent_id"])->limit(1)->get()->first()->getFullPath();
+        }
+        $path = $path . "/" . $this["slug"];
+        return $path;
+    }
 }
