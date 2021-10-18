@@ -44,33 +44,81 @@ class PageController extends Controller
      * @param string $page_slug
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|null
      */
-    function get(Request $request, string $category_slug, string $page_slug) {
-        $cat = $this->getCategory($category_slug);
+    function get(Request $request, string $categories) {
+        $arguments = explode("/", $categories);
 
-        if ($cat == null) {
-            abort(404);
-            return null;
+        if (count($arguments) == 1) {
+
+            $category_slug = $arguments[0];
+
+            $category = PageController::getCategory($category_slug);
+
+            if ($category == null) {
+                abort(404);
+                return null;
+            }
+
+            return view("category.category")
+                ->with("category", $category)
+                ->with("pages", $this->getPages($category));
+        } else {
+            $page_slug = $arguments[count($arguments) - 1];
+
+            array_pop($arguments);
+
+            $categories = [];
+
+            $lastCategoryId = null;
+            foreach ($arguments as $category_slug) {
+                $cat = self::getCategoryWithParent($category_slug, $lastCategoryId);
+
+                if ($cat == null) {
+                    abort(405);
+                    return null;
+                }
+
+                $lastCategoryId = $cat["id"];
+
+                array_push($categories, $cat);
+            }
+
+            $page = self::getPage($lastCategoryId, $page_slug);
+
+            if ($page == null) {
+                abort(405);
+                return null;
+            }
+
+            $parseDown = new Parsedown();
+            $content = $parseDown->text($page["content"]);
+
+
+            return view("page.page")
+                ->with("content", $content)
+                ->with("page", $page)
+                ->with("categories", $categories);
+
+
         }
 
-        $page = $this->getPage($cat["id"], $page_slug);
+//        $cat = $this->getCategory($category_slug);
+//
+//        if ($cat == null) {
+//            abort(404);
+//            return null;
+//        }
+//
+//        $page = $this->getPage($cat["id"], $page_slug);
+//
 
-        if ($page == null) {
-            abort(404);
-            return null;
-        }
-
-        $parseDown = new Parsedown();
-        $content = $parseDown->text($page["content"]);
-
-
-        return view("page.page")
-            ->with("content", $content)
-            ->with("page", $page)
-            ->with("category", $cat);
     }
 
     public static function getCategory(string $slug): ?Category {
         return Category::query()->where("slug", "=", $slug)->get()->first();
+    }
+
+    public static function getCategoryWithParent(string $slug, $catId): ?Category {
+        return Category::query()->where("slug", "=", $slug)->where("parent_id", "=", $catId)->get()->first();
     }
 
     public static function getPage($catId, string $slug): ?Page {

@@ -58,7 +58,7 @@ class CategoryController extends Controller
         return redirect()->route("category.list");
     }
 
-    function getPages(Category $category): ?array
+    public static function getPages(Category $category): ?array
     {
         return Page::query()->where("category_id", "=", $category["id"])->get()->all();
     }

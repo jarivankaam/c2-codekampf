@@ -14,9 +14,11 @@
 <div class="wrapper">
     <p class="link">
         /
-        <a href="/{{ $category["slug"] }}">{{ $category["slug"] }}</a>
+        @foreach($categories as $category)
+        <a href="{{ $category->currentPath}}">{{ $category["slug"] }}</a>
         /
-        <a href="/{{ $category["slug"] }}/{{ $page["slug"] }}">{{ $page["slug"] }}</a>
+        @endforeach
+        <a href="{{ $category->currentPath }}/{{ $page["slug"] }}">{{ $page["slug"] }}</a>
     </p>
     <div class="page">
         <h1 class="page-title">{{$page["title"]}}</h1>

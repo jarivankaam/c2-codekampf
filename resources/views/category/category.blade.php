@@ -26,7 +26,14 @@
 <div class="wrapper">
     <p class="link">
         /
-        <a href="/{{ $category["slug"] }}">{{ $category["slug"] }}</a>
+        @isset($categories)
+        @foreach($categories as $category2)
+            <a href="{{ $category2->currentPath }}">{{ $category2["slug"] }}</a>
+            /
+        @endforeach
+        @endisset
+
+        <a href="">{{ $category["slug"] }}</a>
     </p>
 
     <div class="category-info">
@@ -37,7 +44,7 @@
     <h3 class="pages-text">Pages: </h3>
     <ul class="page-list">
         @foreach($pages as $page)
-            <a href="{{ route("page", [$category["slug"], $page["slug"]]) }}"><h4 style="--page-color: {{ $page["color"] }};">{{ $page["name"] }}</h4></a>
+            <a href="./{{ $category["slug"] }}/{{ $page["slug"] }}"><h4 style="--page-color: {{ $page["color"] }};">{{ $page["name"] }}</h4></a>
         @endforeach
     </ul>
 </div>
