@@ -44,7 +44,6 @@
                 </div>
                 <div class="time">
                     <h3>Datum en tijd:</h3>
-{{--                    <p id="time-el"><?php date_default_timezone_set('Europe/Amsterdam'); echo date('d-m-Y H:i:s' ); ?></p>--}}
                     <p id="time-el"></p>
 
                 </div>
