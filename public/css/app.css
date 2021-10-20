@@ -10429,7 +10429,8 @@ body {
 .message-container {
   display: flex;
   flex-direction: column;
-  max-height: 600px;
+  max-height: 45vh;
+  min-height: 200px;
   overflow: auto;
 }
 
