@@ -19,7 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-        <script src="{{ asset('js/timer.js') }}" defer></script>
+        <script src="{{ asset('js/main.js') }}" defer></script>
     </head>
     <body>
 
