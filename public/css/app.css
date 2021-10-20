@@ -10019,6 +10019,11 @@ pre {
   text-decoration: underline;
 }
 
+.contact img {
+  width: 60%;
+  margin-bottom: 10px;
+}
+
 .page-list h4 {
   border: var(--page-color) solid 2px;
   padding: 10px;

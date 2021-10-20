@@ -34,7 +34,9 @@
                 <div class="contact">
                     <h3>Contact Us</h3>
                     <p>Telefoonnummer: 076-80934847</p>
-                    <p>Addres: Terheidenseweg 350 breda</p>
+                    <p>Addres: Koestraat 1 Den Bosch</p>
+
+                    <img src="{{ asset('img/koestraat.png') }}" alt="plattegrond">
                 </div>
                 <div class="about">
                     <h3>About us</h3>
