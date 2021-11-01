@@ -43,6 +43,7 @@ class PageController extends Controller
         $page->category_id = $request->category;
         $page->name = $request->name;
         $page->color = $request->color;
+        $page->price = $request->price;
         $page->slug = $request->slug;
         $page->title = $request->title;
         $page->content = $request->contents;
@@ -64,6 +65,7 @@ class PageController extends Controller
         $page->category_id = $request->category;
         $page->name = $request->name;
         $page->color = $request->color;
+        $page->price = $request->price;
         $page->slug = $request->slug;
         $page->title = $request->title;
         $page->content = $request->contents;
