@@ -38,9 +38,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Kleur:</label><br>
-                            <input class="form-color" type="color" name="color">
+                            <label>Prijs:</label>
+                            <input class="form-input" type="number" name="price">
                         </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Kleur:</label><br>
+                        <input class="form-color" type="color" name="color">
                     </div>
                     <div class="form-group full-width">
                         <label for="contents">Content:</label>

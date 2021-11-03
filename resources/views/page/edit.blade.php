@@ -37,9 +37,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Kleur:</label><br>
-                            <input class="form-color" type="color" name="color" value="{{$page->color}}">
+                            <label>Prijs:</label>
+                            <input class="form-input" type="number" name="price" value="{{$page->price}}">
                         </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Kleur:</label><br>
+                        <input class="form-color" type="color" name="color" value="{{$page->color}}">
                     </div>
                     <div class="form-group full-width">
                         <label for="contents">Content:</label>
