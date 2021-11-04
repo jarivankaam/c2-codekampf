@@ -43,7 +43,11 @@ Route::get("/category/{category}/delete", [CategoryController::class, "delete"])
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home2');
+
+Route::get("/users", [\App\Http\Controllers\UsersController::class, 'index'])->name("users")->middleware('auth');
+Route::get("/users/{user2}/admin/{admin}", [\App\Http\Controllers\UsersController::class, 'admin'])->name("user.admin")->middleware('auth');
+Route::get("/users/{user2}/delete", [\App\Http\Controllers\UsersController::class, 'delete'])->name("user.delete")->middleware('auth');
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
 

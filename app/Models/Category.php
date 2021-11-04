@@ -21,4 +21,9 @@ class Category extends Model
         $path = $path . "/" . $this["slug"];
         return $path;
     }
+
+    public function getSubCategories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany("categories", "parent_id", "id");
+    }
 }
