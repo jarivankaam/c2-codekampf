@@ -17,7 +17,7 @@
                         let map = new mapboxgl.Map({
                             container: 'map',
                             style: 'mapbox://styles/mapbox/streets-v11',
-                            center: [5.2914112, 51.6973624],
+                            center: [5.293600, 51.697400],
                             zoom: 18,
                         });
                         map.addControl(new mapboxgl.NavigationControl());
@@ -29,7 +29,7 @@
                             showUserHeading: true
                         }));
                         let marker = new mapboxgl.Marker()
-                            .setLngLat([5.2914112, 51.6973624])
+                            .setLngLat([5.293600, 51.697400])
                             .addTo(map);
                     </script>
                 </div>
