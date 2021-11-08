@@ -23,12 +23,17 @@
         @endforeach
         <a href="{{ $category->currentPath }}/{{ $page["slug"] }}">{{ $page["slug"] }}</a>
     </p>
+    @if($page->price != null)
+    <p>Prijs: {{$page->price}}</p>
+    @endif
     <div class="page">
         <h1 class="page-title">{{$page["title"]}}</h1>
         <div class="page-content">
             {!! $content !!}
         </div>
     </div>
+    @include('includes.footer')
 </div>
+
 </body>
 </html>

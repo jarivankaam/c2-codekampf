@@ -17,5 +17,7 @@
         @include('includes.chat')
         @include('includes.footer')
     </div>
+
+    @include('includes.footer')
 </body>
 </html>
