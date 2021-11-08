@@ -1,11 +1,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
     pre {
         border-radius: 15px;
         padding: 15px;
@@ -78,6 +79,11 @@
         margin-left: 20px;
     }
 
+}
+
+.header h2{
+    font-family: 'Londrina Solid', cursive;
+    font-size: 35px;
 }
 .dropbtn{
     background: #f2f2f2;

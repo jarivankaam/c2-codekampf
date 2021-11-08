@@ -29,15 +29,15 @@
         @endphp
         <div class="wrapper">
             <div class="title">
-                <h1>C2-CodeCamp praktijk opdracht</h1>
+                <h1>CodeCamp</h1>
             </div>
             <div class="gridwrapper">
                 <div class="contact">
                     <h3>Contact Us</h3>
                     <p>Telefoonnummer: 076-80934847</p>
                     <p>Addres: Koestraat 1 Den Bosch</p>
-                    
-                    <div id="googleMap" style="width:75%;height:400px;"></div>  
+
+                    <div id="googleMap" style="width:75%;height:400px;"></div>
 
                     <script>
                         function myMap() {
@@ -55,7 +55,7 @@
 
 
                     </script>
-                    
+
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuUMx5QRvBmNC5Dv3o1Jqr0UlxRn8xyuw&callback=myMap"></script>
                 </div>
                 <div class="about">
