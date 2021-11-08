@@ -377,34 +377,69 @@ body {
     overflow: hidden;
 }
 .message{
-    padding: 5px;
-    border-radius: 10px;
     margin: 10px;
-    font-size: 16px;
+    max-width: 80%;
+    .timestamp{
+        font-size: 10px;
+        margin-bottom: 2px;
+    }
+    .content{
+        border-radius: 10px;
+        font-size: 16px;
+        padding: 5px;
+        word-wrap: break-word
+    }
+    &.message-left{
+        align-self: start;
+        .content{
+            text-align: left;
+            background-color: #9cd4ff;
+        }
+        .timestamp{
+            text-align: left;
+        }
+    }
+    &.message-right{
+        align-self: end;
+        .content{
+            text-align: right;
+            background-color: #f8f8f8;
+        }
+        .timestamp{
+            text-align: right;
+        }
+    }
 }
-.message-left{
-    align-self: start;
-    background-color: #9cd4ff;
-}
-.message-right{
-    align-self: end;
-    background-color: #f8f8f8;
-}
+
 .chatbox-header{
     padding: 10px 0;
     background-color: #2377bb;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    .title{
+        width: 100%;
+    }
+    .exit-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 .chatbox-header button{
     background: none;
     color: white;
     font-size: 20px;
+    outline: none;
+    border: none;
+    &:hover{
+        color: lightgrey;
+    }
 }
 .chatbox-header p{
     font-size: 22px;
     color: white;
+    margin: 0;
+    text-align: center;
 }
 .message-container{
     display: flex;
@@ -413,9 +448,31 @@ body {
     min-height: 200px;
     overflow: auto;
 }
-#chatbox-input{
-    width: 100%;
-    min-height: 60px;
-    font-size: 20px;
+
+.sendDiv{
+    display: flex;
+    border-top: 1px solid black;
+    input{
+        width: 90%;
+        font-size: 20px;
+        border-radius: 0;
+        border: none;
+        &:focus{
+            outline: none;
+        }
+    }
+    button{
+        width: 10%;
+        background-color: #0018c4;
+        color: white;
+        outline: none;
+        border: none;
+        transition: all 200ms;
+        &:hover{
+            background-color: #1e33c7;
+            color: white;
+            cursor: pointer;
+        }
+    }
 }
 

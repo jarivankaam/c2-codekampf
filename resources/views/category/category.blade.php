@@ -23,8 +23,8 @@
 <body>
 
 @php
-    use App\Http\Controllers\HomeController2;
-    echo HomeController2::categoryInclude();
+    use App\Http\Controllers\HomeController;
+    echo HomeController::categoryInclude();
 @endphp
 <div class="wrapper">
     <p class="link">
