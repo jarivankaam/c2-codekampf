@@ -12,7 +12,7 @@
 <body>
 @php
     use App\Http\Controllers\HomeController;
-    echo HomeController::categoryInclude();
+    echo HomeController::headerNav();
 @endphp
 <div class="wrapper">
     <p class="link">
