@@ -15,7 +15,6 @@
         </main>
 
         @include('includes.chat')
-        @include('includes.footer')
     </div>
 
     @include('includes.footer')
