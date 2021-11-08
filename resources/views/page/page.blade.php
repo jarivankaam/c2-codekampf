@@ -8,6 +8,7 @@
             --page-color: {{ $page["color"] }};
         }
     </style>
+
 </head>
 <body>
 @php
