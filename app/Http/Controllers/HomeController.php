@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
-    public static function categoryInclude() {
+    public static function headerNav() {
         $categories = Category::all()->all();
         return view("includes/header")
             ->with("categories", $categories);
