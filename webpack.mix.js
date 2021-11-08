@@ -17,4 +17,4 @@ mix.autoload({
     .js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css')
-    .js('resources/js/mai   n.js', 'public/js');
+    .js('resources/js/main.js', 'public/js');

@@ -32,6 +32,8 @@
             {!! $content !!}
         </div>
     </div>
+    @include('includes.footer')
 </div>
+
 </body>
 </html>

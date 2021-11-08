@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-
-//Pages
-
+//Chat
+Route::get("/chat/messages", [ChatsController::class, 'fetchMessages'])->name("getMessages");
+Route::post("/chat/messages", [ChatsController::class, 'saveMessage'])->name("saveMessage");
 
 //Pages
 Route::get("/pages", [PageController::class, "pageList"])->name("page.list");
@@ -41,6 +42,11 @@ Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->na
 Route::post("/category/{category}", [CategoryController::class, "update"])->name("category.update")->middleware('auth');
 Route::get("/category/{category}/delete", [CategoryController::class, "delete"])->name("category.delete")->middleware('auth');
 
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index'])->name('chat');
+Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages'])->name('fetchMessages');
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage'])->name('sendMessage');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home2');
@@ -50,4 +56,3 @@ Route::get("/users/{user2}/admin/{admin}", [\App\Http\Controllers\UsersControlle
 Route::get("/users/{user2}/delete", [\App\Http\Controllers\UsersController::class, 'delete'])->name("user.delete")->middleware('auth');
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
-
