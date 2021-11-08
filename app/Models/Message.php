@@ -10,4 +10,10 @@ class Message extends Model
     use HasFactory;
 
     protected $table = "messages";
+    /**
+     * Fields that are mass assignable
+     *
+     * @var array
+     */
+    protected $fillable = ['message'];
 }

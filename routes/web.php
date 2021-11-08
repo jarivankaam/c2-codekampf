@@ -42,9 +42,13 @@ Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->na
 Route::post("/category/{category}", [CategoryController::class, "update"])->name("category.update")->middleware('auth');
 Route::get("/category/{category}/delete", [CategoryController::class, "delete"])->name("category.delete")->middleware('auth');
 
+Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index'])->name('chat');
+Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages'])->name('fetchMessages');
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage'])->name('sendMessage');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
-
