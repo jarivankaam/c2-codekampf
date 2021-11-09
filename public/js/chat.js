@@ -1,5 +1,5 @@
 let myStorage = localStorage || window.localStorage;
-//let socket = new WebSocket("wss://chatkampf.fabiandingemans.nl:8045/socket");
+let socket = new WebSocket("wss://pra-chat.herokuapp.com/socket");
 let messagesDiv = document.getElementById('message-container');
 
 $('#open-chatbox').click(function () {
@@ -36,37 +36,37 @@ function timeConverter(UNIX_timestamp){
     return time;
 }
 
-// socket.onopen = function(e) {
-//     console.log("Connection established");
-// };
+socket.onopen = function(e) {
+    console.log("Connection established");
+};
 
-// socket.onmessage = function(event) {
-//     let jsonDate = JSON.parse(event.data);
-//     let uuid = myStorage.getItem("uuid");
-//     let timestamp = timeConverter(jsonDate.created_at);
-//
-//     if(jsonDate.uuid === uuid){
-//         messagesDiv.innerHTML += '<div class="message message-right"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
-//     }else{
-//         messagesDiv.innerHTML += '<div class="message message-left"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
-//     }
-//
-//     scrollBottom();
-// };
-//
-// socket.onclose = function(event) {
-//     if (event.wasClean) {
-//         console.log(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-//     } else {
-//         alert('Connection died');
-//     }
-// };
+socket.onmessage = function(event) {
+    let jsonDate = JSON.parse(event.data);
+    let uuid = myStorage.getItem("uuid");
+    let timestamp = timeConverter(jsonDate.created_at);
+
+    if(jsonDate.uuid === uuid){
+        messagesDiv.innerHTML += '<div class="message message-right"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
+    }else{
+        messagesDiv.innerHTML += '<div class="message message-left"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
+    }
+
+    scrollBottom();
+};
+
+socket.onclose = function(event) {
+    if (event.wasClean) {
+        console.log(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+    } else {
+        alert('Connection died');
+    }
+};
 
 function sendMessage(messageJson){
     axios.post('/chat/messages', messageJson).then(response => {
         if(response.data.statusCode === 200){
             messageJson['created_at'] = new Date().getTime();
-            //socket.send(JSON.stringify(messageJson));
+            socket.send(JSON.stringify(messageJson));
 
             scrollBottom();
             document.getElementById("chatbox-input").value = "";
