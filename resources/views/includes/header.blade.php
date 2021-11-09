@@ -38,6 +38,16 @@
                     </div>
                 </li>
             </ul>
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2">
+                    <a href="/pages">pages</a>
+                </button>
+                <button type="button" class="btn btn-link px-3 me-2">
+                    <a href="/category/create">categorie maken</a>
+                </button>
+
+            </div>
+
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
