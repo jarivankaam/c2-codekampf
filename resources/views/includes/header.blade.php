@@ -39,24 +39,37 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center">
-                <button type="button" class="btn btn-link px-3 me-2">
-                    <a href="/pages">pages</a>
-                </button>
-                <button type="button" class="btn btn-link px-3 me-2">
-                    <a href="/category/create">categorie maken</a>
-                </button>
+                <div class="nav-item">
+                    <button type="button" class="btn btn-primary me-3">
+                        <a href="/pages">pages</a>
+                    </button>
+                </div>
+                <div class="nav-item">
+                    <button type="button" class="btn btn-primary me-3">
+                        <a href="/page/create">pagina maken</a>
+                    </button>
+                </div>
+                <div class="nav-item">
+                    <button type="button" class="btn btn-primary me-3">
+                        <a href="/category/create">categorie maken</a>
+                    </button>
+                </div>
 
             </div>
 
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
-                <button type="button" class="btn btn-link px-3 me-2">
-                    <a href="/login">login</a>
-                </button>
-                <button type="button" class="btn btn-primary me-3">
-                    <a href="/register" style="color:white;">Meld je aan</a>
-                </button>
+                <div class="nav-item">
+                    <button type="button" class="btn btn-primary me-3 login">
+                        <a href="/login">login</a>
+                    </button>
+                </div>
+                <div class="nav-item">
+                    <button type="button" class="btn btn-primary me-3 login">
+                        <a href="/register">Meld je aan</a>
+                    </button>
+                </div>
             </div>
         </div>
         <!-- Collapsible wrapper -->
