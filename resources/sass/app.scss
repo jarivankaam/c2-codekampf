@@ -122,14 +122,16 @@ button a{
     color:white;
 }
 button.dropbtn{
-    border:2px solid #0d6efd;
+    border:1px solid #0d6efd;
     background: white;
-    border-radius: 10px;
+    border-radius: 5px;
 
 }
 .dropbtn{
     background: #f2f2f2;
     color:black;
+    padding-top: 6px;
+    padding-bottom: 6px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -154,6 +156,7 @@ button.dropbtn{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     margin-left: 10px;
+
 }
 
 .dropDown-content a{
