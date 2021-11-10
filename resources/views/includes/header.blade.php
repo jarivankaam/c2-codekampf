@@ -7,7 +7,7 @@
     <div class="container">
         <!-- Navbar brand -->
         <h2><a class="navbar-brand me-2" href="/">
-           CODECAMP
+                <img src="{{asset('img/codecamp1.png')}}" alt="codecamp">
         </a></h2>
 
         <!-- Toggle button -->
@@ -26,19 +26,17 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarButtonsExample">
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <div class="categoryDropdown">
-                        <button class="dropbtn" id="categoryDropdownBtn">Categories</button>
-                        <div class="dropDown-content" id="dropDownContent">
-                            @foreach($categories as $category)
-                                <a class="categoryDropdownItemBtn" href="{{ $category->getFullPath() }}" >{{ $category["title"] }}</a>
-                            @endforeach
-                        </div>
-                    </div>
-                </li>
-            </ul>
+
             <div class="d-flex align-items-center">
+                <div class="categoryDropdown">
+                    <button class="dropbtn" id="categoryDropdownBtn">Categories</button>
+                    <div class="dropDown-content" id="dropDownContent">
+                        @foreach($categories as $category)
+                            <a class="categoryDropdownItemBtn" href="{{ $category->getFullPath() }}" >{{ $category["title"] }}</a>
+                        @endforeach
+                    </div>
+                </div>
+                <br>
                 <div class="nav-item">
                     <button type="button" class="btn btn-primary me-3">
                         <a href="/pages">pages</a>
