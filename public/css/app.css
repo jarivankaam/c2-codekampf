@@ -10070,9 +10070,13 @@ pre {
   margin-left: 20px;
 }
 
-.header h2 {
+.container h2 a {
   font-family: "Londrina Solid", cursive;
   font-size: 35px;
+}
+
+button a {
+  color: white;
 }
 
 .dropbtn {
@@ -10470,6 +10474,16 @@ body {
   max-height: 45vh;
   min-height: 200px;
   overflow: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.chat-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sendDiv {

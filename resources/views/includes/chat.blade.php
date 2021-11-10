@@ -8,11 +8,14 @@
                 <button id="close-chatbox">X</button>
             </div>
         </div>
-        <div class="message-container" id="message-container">
+        <div class="message-container hidden" id="message-container"></div>
+        <div class="message-container chat-error" id="error-message-box">
+            <h2>Kan geen verbinding</h2>
+            <h2>maken met de chat!!</h2>
         </div>
         <div class="sendDiv">
-            <input type="text" id="chatbox-input" placeholder="Typ uw bericht...">
-            <button id="send-btn">Send</button>
+            <input type="text" id="chatbox-input" placeholder="Typ uw bericht..." readonly>
+            <button id="send-btn" disabled>Send</button>
         </div>
     </div>
 

@@ -9,6 +9,9 @@
                 <div class="panel-heading">Chats</div>
 
                 <div class="panel-body">
+                    <div class="messages" style="display:hidden;">
+
+                    </div>
                     <div class="messages">
 
                     </div>

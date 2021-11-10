@@ -1,6 +1,7 @@
 let myStorage = localStorage || window.localStorage;
 let socket = new WebSocket("wss://pra-chat.herokuapp.com/socket");
 let messagesDiv = document.getElementById('message-container');
+let chatConnected = false;
 
 $('#open-chatbox').click(function () {
     $('.chatbox-container').css("visibility", "visible");
@@ -32,12 +33,12 @@ function timeConverter(UNIX_timestamp){
     var hour = Math.round(a.getHours());
     var min = Math.round(a.getMinutes());
     var sec = Math.round(a.getSeconds());
-    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return time;
+    return date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
 }
 
 socket.onopen = function(e) {
-    console.log("Connection established");
+    chatConnected = true;
+    updateChatStatus();
 };
 
 socket.onmessage = function(event) {
@@ -55,21 +56,25 @@ socket.onmessage = function(event) {
 };
 
 socket.onclose = function(event) {
+    chatConnected = false;
+    updateChatStatus();
     if (event.wasClean) {
         console.log(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-    } else {
-        alert('Connection died');
     }
 };
 
 function sendMessage(messageJson){
+    updateChatStatus();
+    if (!chatConnected){
+        return;
+    }
+
     axios.post('/chat/messages', messageJson).then(response => {
         if(response.data.statusCode === 200){
             messageJson['created_at'] = new Date().getTime();
             socket.send(JSON.stringify(messageJson));
 
             scrollBottom();
-            document.getElementById("chatbox-input").value = "";
         }else{
             console.log(response);
         }
@@ -77,6 +82,20 @@ function sendMessage(messageJson){
     .catch(function (error) {
         console.log(error);
     });
+}
+
+function updateChatStatus(){
+    if (!chatConnected){
+        document.getElementById("error-message-box").classList.remove("hidden");
+        document.getElementById("message-container").classList.add("hidden");
+        document.getElementById("chatbox-input").setAttribute("readonly", "");
+        document.getElementById("send-btn").setAttribute("disabled", "");
+    }else{
+        document.getElementById("error-message-box").classList.add("hidden");
+        document.getElementById("message-container").classList.remove("hidden");
+        document.getElementById("chatbox-input").removeAttribute("readonly");
+        document.getElementById("send-btn").removeAttribute("disabled");
+    }
 }
 
 window.onload = function (){
@@ -92,6 +111,7 @@ window.onload = function (){
     });
 
     document.getElementById("send-btn").addEventListener("click", function(event) {
+        console.log("click");
         let uuid = myStorage.getItem("uuid");
         let content = document.getElementById("chatbox-input").value;
 
@@ -100,8 +120,14 @@ window.onload = function (){
             "content": content
         };
 
+        document.getElementById("chatbox-input").value = "";
         sendMessage(jsonMessage);
     });
+
+    updateChatStatus();
+    if (!chatConnected){
+        return;
+    }
 
     axios.get('/chat/messages').then(response => {
         if(response.data.statusCode === 200){
@@ -114,6 +140,7 @@ window.onload = function (){
                 }else{
                     messagesDiv.innerHTML += '<div class="message message-left"><div class="timestamp">'+timestamp+'</div><div class="content">'+message.content+'</div></div>';
                 }
+                scrollBottom();
             });
         }else{
             console.log(response);
