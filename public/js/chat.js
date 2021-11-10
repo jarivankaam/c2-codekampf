@@ -58,6 +58,7 @@ socket.onmessage = function(event) {
 socket.onclose = function(event) {
     chatConnected = false;
     updateChatStatus();
+    console.log(event);
     if (event.wasClean) {
         console.log(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
     }
@@ -73,11 +74,11 @@ function sendMessage(messageJson){
         if(response.data.statusCode === 200){
             messageJson['created_at'] = new Date().getTime();
             socket.send(JSON.stringify(messageJson));
-
-            scrollBottom();
         }else{
+            messagesDiv.innerHTML += '<div class="message message-right message-error"><div class="timestamp">'+response.data.status+'</div><div class="content">'+messageJson.content+'</div></div>';
             console.log(response);
         }
+        scrollBottom();
     })
     .catch(function (error) {
         console.log(error);
@@ -111,9 +112,12 @@ window.onload = function (){
     });
 
     document.getElementById("send-btn").addEventListener("click", function(event) {
-        console.log("click");
         let uuid = myStorage.getItem("uuid");
         let content = document.getElementById("chatbox-input").value;
+
+        if(content.length < 1){
+            return;
+        }
 
         let jsonMessage = {
             "uuid": uuid,

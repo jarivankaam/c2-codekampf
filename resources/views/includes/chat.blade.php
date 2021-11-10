@@ -14,11 +14,10 @@
             <h2>maken met de chat!!</h2>
         </div>
         <div class="sendDiv">
-            <input type="text" id="chatbox-input" placeholder="Typ uw bericht..." readonly>
+            <input type="text" id="chatbox-input" maxlength="1250" placeholder="Typ uw bericht..." readonly>
             <button id="send-btn" disabled>Send</button>
         </div>
     </div>
-
     <button id="open-chatbox">chat</button>
 </div>
 <script src="js/chat.js"></script>

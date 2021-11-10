@@ -10434,6 +10434,9 @@ body {
 .message.message-right .timestamp {
   text-align: right;
 }
+.message.message-error .content {
+  background-color: #ff7f7f;
+}
 
 .chatbox-header {
   padding: 10px 0;
