@@ -43,7 +43,7 @@
                 <select name="parent" id="parent">
                     <option value="">None</option>
                     @foreach($categories as $cat)
-                        <option @if($cat["id"] == $category["id"]) selected @endif value="{{ $cat["id"] }}">{{ $cat["title"] }}</option>
+                        <option @if($cat["id"] == $category["parent_id"]) selected @endif value="{{ $cat["id"] }}">{{ $cat["title"] }}</option>
                     @endforeach
                 </select>
             </div>
