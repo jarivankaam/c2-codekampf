@@ -10069,6 +10069,11 @@ pre {
   margin-top: 50px;
 }
 
+.page-title-div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .category {
   width: 100%;
   border: #1a202c solid 2px;
@@ -10294,8 +10299,26 @@ body {
   margin-top: 15px;
 }
 
-.page h1 {
-  border-bottom: var(--page-color) 2px solid;
+.page-title-div{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: var(--page-color) 2px solid;
+    margin-bottom: 5px;
+}
+
+.page-title-div .page-title{
+    margin-bottom: 2px;
+}
+
+.page-title-div .page-like{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title-div .page-like .fa-heart{
+    color: red;
+    font-size: 30px;
 }
 
 .page-content h2 {

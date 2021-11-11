@@ -4,9 +4,11 @@ namespace App\Http\Middleware;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
+use App\Models\PageLike;
 use Closure;
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance as Middleware;
+use Illuminate\Support\Facades\Auth;
 use Parsedown;
 use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
@@ -95,13 +97,22 @@ class PageCatcher extends Middleware
             $parseDown = new Parsedown();
             $content = $parseDown->text($page["content"]);
 
+            $like = PageLike::all()
+                ->where('page_id', '=', $page->id);
+
+            if(Auth::id() != null){
+                $like = $like->where('user_id', '=', Auth::id());
+                $like = $like->first();
+            }else if(isset($_COOKIE['chat_session_uuid'])) {
+                $like = $like->where('session_id', '=', $_COOKIE['chat_session_uuid']);
+                $like = $like->first();
+            }
 
             return Response::create(view("page.page")
                 ->with("content", $content)
                 ->with("page", $page)
-                ->with("categories", $categories));
-
-
+                ->with("categories", $categories)
+                ->with('page_like', $like));
         }
     }
 }

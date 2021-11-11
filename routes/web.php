@@ -32,6 +32,8 @@ Route::post('/page/create',[PageController::class, 'store'])->name('page.store')
 Route::get("/page/{page}/edit", [PageController::class, "edit"])->name("page.edit")->middleware('auth');
 Route::post("/page/{page}", [PageController::class, "update"])->name("page.update")->middleware('auth');
 Route::get("/page/{page}/delete", [PageController::class, "delete"])->name("page.delete")->middleware('auth');
+Route::get("/page/{page}/like", [PageController::class, "like"])->name("page.like");
+Route::get("/page/{page}/dislike", [PageController::class, "dislike"])->name("page.dislike");
 
 //Categories
 Route::get("/categories", [CategoryController::class, "categoryList"])->name("category.list")->middleware('auth');
