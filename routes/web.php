@@ -49,7 +49,7 @@ Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMess
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home2');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get("/users", [\App\Http\Controllers\UsersController::class, 'index'])->name("users")->middleware('auth');
 Route::get("/users/{user2}/admin/{admin}", [\App\Http\Controllers\UsersController::class, 'admin'])->name("user.admin")->middleware('auth');

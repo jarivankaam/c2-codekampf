@@ -14,5 +14,8 @@ class HomeController extends Controller
         return view("includes/header")
             ->with("categories", $categories)->with("pages", $pages);
     }
+    public static function index(){
+        return view('welcome');
+    }
 
 }
