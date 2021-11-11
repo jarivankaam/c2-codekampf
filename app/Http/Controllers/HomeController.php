@@ -15,7 +15,7 @@ class HomeController extends Controller
             ->with("categories", $categories)->with("pages", $pages);
     }
     public static function index(){
-        return view('home');
+        return view('welcome');
     }
 
 }
