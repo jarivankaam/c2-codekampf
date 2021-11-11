@@ -24,10 +24,28 @@
         </button>
 
         <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <div class="collapse navbar-collapse header-right-align" id="navbarButtonsExample">
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
+
+                @if(Auth::check())
+                    <div class="nav-item">
+                        <button type="button" class="btn btn-primary me-3">
+                            <a href="/pages">Pagina's</a>
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button type="button" class="btn btn-primary me-3">
+                            <a href="/page/create">Pagina Maken</a>
+                        </button>
+                    </div>
+                    <div class="nav-item">
+                        <button type="button" class="btn btn-primary me-3">
+                            <a href="/category/create">Categorie Maken</a>
+                        </button>
+                    </div>
+                @endif
                 <div class="categoryDropdown">
                     <button class="dropbtn" id="categoryDropdownBtn">Categories</button>
                     <div class="dropDown-content" id="dropDownContent">
@@ -36,31 +54,15 @@
                         @endforeach
                     </div>
                 </div>
-                <br>
-                <div class="nav-item">
-                    <button type="button" class="btn btn-primary me-3">
-                        <a href="/pages">pages</a>
-                    </button>
-                </div>
-                <div class="nav-item">
-                    <button type="button" class="btn btn-primary me-3">
-                        <a href="/page/create">pagina maken</a>
-                    </button>
-                </div>
-                <div class="nav-item">
-                    <button type="button" class="btn btn-primary me-3">
-                        <a href="/category/create">categorie maken</a>
-                    </button>
-                </div>
 
             </div>
 
             <!-- Left links -->
-
+            @if(!Auth::check())
             <div class="d-flex align-items-center">
                 <div class="nav-item">
                     <button type="button" class="btn btn-primary me-3 login">
-                        <a href="/login">login</a>
+                        <a href="/login">Login</a>
                     </button>
                 </div>
                 <div class="nav-item">
@@ -69,6 +71,15 @@
                     </button>
                 </div>
             </div>
+            @else
+                <div class="d-flex align-items-center">
+                    <div class="nav-item">
+                        <button type="button" class="btn btn-primary me-3 login">
+                            <a href="/logout">Logout</a>
+                        </button>
+                    </div>
+                </div>
+            @endif
         </div>
         <!-- Collapsible wrapper -->
     </div>

@@ -10125,7 +10125,8 @@ button.dropbtn {
 }
 
 h2 a.navbar-brand.me-2 img {
-  width: 50%;
+  width: 30%;
+  margin-right: 142px;
 }
 
 .dropbtn {
@@ -10156,7 +10157,7 @@ h2 a.navbar-brand.me-2 img {
   background: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 3;
   margin-left: 10px;
 }
 
@@ -10245,6 +10246,11 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.header-right-align {
+  display: flex;
+  justify-content: end;
+}
+
 .wrapper {
   width: 960px;
   margin: 30px auto 50px auto;
@@ -10283,7 +10289,7 @@ body {
 }
 
 .footer {
-  z-index: 2;
+  z-index: 1;
   position: fixed;
   width: 100%;
   left: 0;
@@ -10292,7 +10298,8 @@ body {
   text-align: center;
   border-top: 2px solid black;
   background: #f2f2f2;
-  height: 20px;
+  height: 48px;
+  margin-top: 5px;
 }
 
 .footer p {
