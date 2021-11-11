@@ -10241,6 +10241,11 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.header-right-align {
+  display: flex;
+  justify-content: end;
+}
+
 .wrapper {
   width: 960px;
   margin: 30px auto 50px auto;

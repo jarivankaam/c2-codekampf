@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMess
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get("/users", [\App\Http\Controllers\UsersController::class, 'index'])->name("users")->middleware('auth');
 Route::get("/users/{user2}/admin/{admin}", [\App\Http\Controllers\UsersController::class, 'admin'])->name("user.admin")->middleware('auth');
