@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+Route::get('/home', function () {
     return view('welcome');
 })->name('home');
 
@@ -40,7 +45,6 @@ Route::get("/page/{page}/dislike", [PageController::class, "dislike"])->name("pa
 Route::get("/categories", [CategoryController::class, "categoryList"])->name("category.list")->middleware('auth');
 Route::get("/category/create", [CategoryController::class, "create"])->name("category.create")->middleware('auth');
 Route::post("/category/create", [CategoryController::class, "store"])->name("category.store")->middleware('auth');
-Route::post("/header", [CategoryController::class, "store"])->name("category.store");
 Route::get("/category/{category}/edit", [CategoryController::class, "edit"])->name("category.edit")->middleware('auth');
 Route::post("/category/{category}", [CategoryController::class, "update"])->name("category.update")->middleware('auth');
 Route::get("/category/{category}/delete", [CategoryController::class, "delete"])->name("category.delete")->middleware('auth');
@@ -49,14 +53,11 @@ Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index'])->nam
 Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages'])->name('fetchMessages');
 Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage'])->name('sendMessage');
 
-
 Auth::routes();
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('signout')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
-Route::get("/users", [\App\Http\Controllers\UsersController::class, 'index'])->name("users")->middleware('auth');
-Route::get("/users/{user2}/admin/{admin}", [\App\Http\Controllers\UsersController::class, 'admin'])->name("user.admin")->middleware('auth');
-Route::get("/users/{user2}/delete", [\App\Http\Controllers\UsersController::class, 'delete'])->name("user.delete")->middleware('auth');
+Route::get("/users", [UsersController::class, 'index'])->name("users")->middleware('auth');
+Route::get("/users/{user2}/admin/{admin}", [UsersController::class, 'admin'])->name("user.admin")->middleware('auth');
+Route::get("/users/{user2}/delete", [UsersController::class, 'delete'])->name("user.delete")->middleware('auth');
 
 //THESE SHOULD ALWAYS BUT THEN REALLY ALWAYS BE AT THE END OF THIS FILE IF NOT EVERYTHING BREAKS BECAUSE LARAVEL STUPIIDDDDD
