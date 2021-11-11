@@ -1,7 +1,62 @@
 let myStorage = localStorage || window.localStorage;
-let socket = new WebSocket("wss://pra-chat.herokuapp.com/socket");
+let socket;
 let messagesDiv = document.getElementById('message-container');
 let chatConnected = false;
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getUUID(){
+    return myStorage.getItem("chat_session_uuid");
+}
+
+function setUUID(value){
+    myStorage.setItem("chat_session_uuid", value);
+    setCookie("chat_session_uuid", value, 365);
+}
+
+const socketConnectListener = (event) => {
+    chatConnected = true;
+    updateChatStatus();
+};
+
+const socketDisconnectListener = (event) => {
+    chatConnected = false;
+    updateChatStatus();
+
+    setTimeout(function() {
+        startWebsocket();
+    }, 500);
+};
+
+const socketMessageListener = (event) => {
+    let jsonDate = JSON.parse(event.data);
+    let uuid = getUUID();
+    let timestamp = timeConverter(jsonDate.created_at);
+
+    if(jsonDate.uuid === uuid){
+        messagesDiv.innerHTML += '<div class="message message-right"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
+    }else{
+        messagesDiv.innerHTML += '<div class="message message-left"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
+    }
+
+    scrollBottom();
+};
+
+function startWebsocket(){
+    socket = new WebSocket("wss://pra-chat.herokuapp.com/socket");
+    socket.addEventListener('open', socketConnectListener);
+    socket.addEventListener('message', socketMessageListener);
+    socket.addEventListener('close', socketDisconnectListener);
+}
+startWebsocket();
 
 $('#open-chatbox').click(function () {
     $('.chatbox-container').css("visibility", "visible");
@@ -36,34 +91,6 @@ function timeConverter(UNIX_timestamp){
     return date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
 }
 
-socket.onopen = function(e) {
-    chatConnected = true;
-    updateChatStatus();
-};
-
-socket.onmessage = function(event) {
-    let jsonDate = JSON.parse(event.data);
-    let uuid = myStorage.getItem("uuid");
-    let timestamp = timeConverter(jsonDate.created_at);
-
-    if(jsonDate.uuid === uuid){
-        messagesDiv.innerHTML += '<div class="message message-right"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
-    }else{
-        messagesDiv.innerHTML += '<div class="message message-left"><div class="timestamp">'+timestamp+'</div><div class="content">'+jsonDate.content+'</div></div>';
-    }
-
-    scrollBottom();
-};
-
-socket.onclose = function(event) {
-    chatConnected = false;
-    updateChatStatus();
-    console.log(event);
-    if (event.wasClean) {
-        console.log(`Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-    }
-};
-
 function sendMessage(messageJson){
     updateChatStatus();
     if (!chatConnected){
@@ -76,12 +103,8 @@ function sendMessage(messageJson){
             socket.send(JSON.stringify(messageJson));
         }else{
             messagesDiv.innerHTML += '<div class="message message-right message-error"><div class="timestamp">'+response.data.status+'</div><div class="content">'+messageJson.content+'</div></div>';
-            console.log(response);
         }
         scrollBottom();
-    })
-    .catch(function (error) {
-        console.log(error);
     });
 }
 
@@ -100,8 +123,8 @@ function updateChatStatus(){
 }
 
 window.onload = function (){
-    if(myStorage.getItem("uuid") == null){
-        myStorage.setItem("uuid", uuidv4());
+    if(getUUID() == null){
+        setUUID(uuidv4());
     }
 
     document.getElementById("chatbox-input").addEventListener("keyup", function(event) {
@@ -112,7 +135,7 @@ window.onload = function (){
     });
 
     document.getElementById("send-btn").addEventListener("click", function(event) {
-        let uuid = myStorage.getItem("uuid");
+        let uuid = getUUID();
         let content = document.getElementById("chatbox-input").value;
 
         if(content.length < 1){
@@ -135,7 +158,7 @@ window.onload = function (){
 
     axios.get('/chat/messages').then(response => {
         if(response.data.statusCode === 200){
-            let uuid = myStorage.getItem("uuid");
+            let uuid = getUUID();
             response.data.messages.forEach(message => {
                 let timestamp = timeConverter(message.created_at);
 
@@ -146,8 +169,6 @@ window.onload = function (){
                 }
                 scrollBottom();
             });
-        }else{
-            console.log(response);
         }
     });
 

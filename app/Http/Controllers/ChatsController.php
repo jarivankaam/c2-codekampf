@@ -10,7 +10,7 @@ class ChatsController extends Controller{
     public function fetchMessages(Request $request){
         $executed = RateLimiter::attempt(
             'send-message:'.base64_encode($request->getClientIp()),
-            $perMinute = 5,
+            $perMinute = 30,
             function() {
                 return true;
             }
@@ -27,7 +27,7 @@ class ChatsController extends Controller{
     public function saveMessage(Request $request){
         $statusCode = RateLimiter::attempt(
             'send-message:'.base64_encode($request->getClientIp()),
-            $perMinute = 5,
+            $perMinute = 30,
             function() use ($request) {
                 $uuid = $request->input('uuid');
                 $content = $request->input('content');
