@@ -130,7 +130,7 @@ button.dropbtn{
 }
 h2 a.navbar-brand.me-2 img{
     width: 30%;
-    margin-right: 150px;
+    margin-right: 142px;
 
 }
 .dropbtn{
@@ -281,7 +281,7 @@ body {
 }
 
 .footer {
-    z-index: 2;
+    z-index: 1;
     position: fixed;
     width: 100%;
     left: 0;
@@ -290,7 +290,8 @@ body {
     text-align: center;
     border-top: 2px solid black;
     background: #f2f2f2;
-    height: 20px;
+    height: 48px;
+    margin-top: 5px;
 }
 
 .footer p {
