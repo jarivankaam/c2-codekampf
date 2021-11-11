@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\PageLike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Parsedown;
 
 class PageController extends Controller
@@ -180,4 +182,50 @@ class PageController extends Controller
     public static function getPageById(int $id): ?Page {
         return Page::query()->where("id", "=", $id)->get()->first();
     }
+
+    function like(Page $page) {
+        $existingPageLike = PageLike::all()->where('page_id', '=', $page->id);
+
+        if(Auth::id() != null){
+            $existingPageLike = $existingPageLike->where('user_id', '=', Auth::id())->first();
+        }else if(isset($_COOKIE['chat_session_uuid'])) {
+            $existingPageLike = $existingPageLike->where('session_id', '=', $_COOKIE['chat_session_uuid'])->first();
+        }
+
+        if($existingPageLike == null){
+            $pageLike = new PageLike();
+            $pageLike->page_id = $page->id;
+        }else{
+            $pageLike = $existingPageLike;
+        }
+
+        if(Auth::id() != null){
+            $pageLike->user_id = Auth::id();
+            $pageLike->save();
+        }else if(isset($_COOKIE['chat_session_uuid'])) {
+            $pageLike->session_id = $_COOKIE['chat_session_uuid'];
+            $pageLike->save();
+        }
+
+        return redirect()->back();
+    }
+
+    function dislike(Page $page) {
+        $pageLike = PageLike::all()->where('page_id', '=', $page->id);
+
+        if($pageLike == null){
+            return redirect()->back();
+        }
+
+        if(Auth::id() != null){
+            $pageLike = $pageLike->where('user_id', '=', Auth::id())->first();
+            $pageLike->delete();
+        }else if(isset($_COOKIE['chat_session_uuid'])) {
+            $pageLike = $pageLike->where('session_id', '=', $_COOKIE['chat_session_uuid'])->first();
+            $pageLike->delete();
+        }
+
+        return redirect()->back();
+    }
+
 }
