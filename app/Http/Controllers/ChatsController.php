@@ -25,12 +25,14 @@ class ChatsController extends Controller{
     }
 
     public function saveMessage(Request $request){
+        $content = htmlspecialchars($request->input('content'));
+
         $statusCode = RateLimiter::attempt(
             'send-message:'.base64_encode($request->getClientIp()),
             $perMinute = 30,
             function() use ($request) {
                 $uuid = $request->input('uuid');
-                $content = $request->input('content');
+                $content = htmlspecialchars($request->input('content'));
 
                 if(strlen($content) < 1){
                     return 411;
@@ -55,7 +57,7 @@ class ChatsController extends Controller{
         }elseif($statusCode == 411){
             return ['status' => 'Can not send empty message', 'statusCode' => 411];
         }elseif($statusCode == 200){
-            return ['status' => 'success', 'statusCode' => 200];
+            return ['status' => 'success', 'statusCode' => 200, 'message' => $content];
         }elseif($statusCode == false){
             return ['status' => 'Too many requests sent!', 'statusCode' => 429];
         }else{
