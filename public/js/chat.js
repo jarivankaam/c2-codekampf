@@ -100,7 +100,6 @@ function sendMessage(messageJson){
     axios.post('/chat/messages', messageJson).then(response => {
         if(response.data.statusCode === 200){
             let message = response.data.message;
-            console.log(message);
 
             messageJson['created_at'] = new Date().getTime();
             messageJson['content'] = message;
